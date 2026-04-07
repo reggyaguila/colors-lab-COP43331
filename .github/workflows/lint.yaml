@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm init -y
-          npm install eslint stylelint htmlhint --save-dev
+          npm install eslint stylelint htmlhint stylelint-config-standard --save-dev
 
       - name: Run ESLint (JavaScript)
         run: npx eslint .
