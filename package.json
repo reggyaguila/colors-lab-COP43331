@@ -1,0 +1,21 @@
+{
+  "name": "colors-lab-cop43331",
+  "version": "1.0.0",
+  "description": "Personal color manager",
+  "main": "index.js",
+  "scripts": {
+    "start:api": "php -S 127.0.0.1:8000 -t colors-lamp/api",
+    "test": "jest",
+    "test:frontend": "jest tests/addColorFrontend.test.js --runInBand",
+    "test:integration": "jest tests/addColor.test.js --runInBand"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.3.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}

@@ -5,8 +5,17 @@
 	$searchResults = "";
 	$searchCount = 0;
 
-	require_once "../config.php";
-	$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	require_once __DIR__ . "/config.php";
+	try
+	{
+		$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+	}
+	catch (mysqli_sql_exception $e)
+	{
+		returnWithError($e->getMessage());
+		exit();
+	}
+
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
