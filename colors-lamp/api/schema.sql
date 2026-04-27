@@ -1,0 +1,28 @@
+CREATE DATABASE IF NOT EXISTS COP4331;
+USE COP4331;
+
+CREATE TABLE IF NOT EXISTS Users (
+	ID INT NOT NULL AUTO_INCREMENT,
+	firstName VARCHAR(50) NOT NULL,
+	lastName VARCHAR(50) NOT NULL,
+	Login VARCHAR(50) NOT NULL UNIQUE,
+	Password VARCHAR(255) NOT NULL,
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE IF NOT EXISTS Colors (
+	ID INT NOT NULL AUTO_INCREMENT,
+	UserId INT NOT NULL,
+	Name VARCHAR(100) NOT NULL,
+	PRIMARY KEY (ID),
+	CONSTRAINT fk_colors_user
+		FOREIGN KEY (UserId) REFERENCES Users(ID)
+);
+
+INSERT INTO Users (ID, firstName, lastName, Login, Password)
+VALUES (1, 'Test', 'User', 'testuser', 'testpass')
+ON DUPLICATE KEY UPDATE
+	firstName = VALUES(firstName),
+	lastName = VALUES(lastName),
+	Login = VALUES(Login),
+	Password = VALUES(Password);
